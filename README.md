@@ -2,6 +2,15 @@
 
 This repository contains the code for a backtesting software to evaluate the performance of the double Bollinger band strategy by [Kathy Lien](https://www.3candlereversal.com/post/kathy-lien-s-double-bollinger-band-strategy) on the Magnificent 7 (Mag-7).
 
+## Double Bollinger Band Strategy
+
+The Double Bollinger Band Strategy provides clear signals for trading:
+
+- **Buy** when the price is between lines A1 and B1.
+- **Sell** when the price is between lines B2 and A2.
+
+![Double Bollinger Band Strategy](assets/double_bollinger_strat.png)
+
 ## Project Structure
 
 The project is organized into the following directories and files:
