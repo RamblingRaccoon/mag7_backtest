@@ -1,6 +1,6 @@
 # Magnificent 7 Backtesting
 
-This repository contains the code for a backtesting software to evaluate the performance of the Magnificent 7 (Mag-7).
+This repository contains the code for a backtesting software to evaluate the performance of the double Bollinger band strategy by [Kathy Lien](https://www.3candlereversal.com/post/kathy-lien-s-double-bollinger-band-strategy) on the Magnificent 7 (Mag-7).
 
 ## Project Structure
 
@@ -13,7 +13,11 @@ The project is organized into the following directories and files:
 
 ## Files
 
-- `backtest.ipynb`: Jupyter Notebook with back tests for the double Bollinger band strategy by [Kathy Lien](https://www.3candlereversal.com/post/kathy-lien-s-double-bollinger-band-strategy).
+- `backtest.ipynb`: A Jupyter Notebook that walks through the following steps:
+  1. **Indicator Implementation**: Calculates and implements double Bollinger Bands and other necessary indicators.
+  2. **Strategy Backtesting**: Applies the double Bollinger Band strategy to Mag-7 stocks over an 11-year period, generating trade signals and executing simulated trades.
+  3. **Performance Evaluation**: Analyzes the strategy's performance with summary statistics, visualizations, and metrics such as total return, annual return, volatility, and drawdowns.
+  4. **Strategy Improvements**: Suggests potential enhancements, such as incorporating implied volatility to create forward-looking bands based on backtesting results.
 
 ## Usage
 
