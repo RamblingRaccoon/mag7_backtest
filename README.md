@@ -7,7 +7,7 @@ This repository contains the code for a backtesting software to evaluate the per
 The Double Bollinger Band Strategy provides clear signals for trading:
 
 - **Buy** when the price is between lines A1 and B1.
-- **Sell** when the price is between lines B2 and A2.
+- **Short** when the price is between lines B2 and A2.
 
 ![Double Bollinger Band Strategy](assets/double_bollinger_strat.png)
 
