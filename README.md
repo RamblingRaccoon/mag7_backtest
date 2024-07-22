@@ -83,15 +83,13 @@ With a starting capital of $10000, the capital trajectory confirms our summary s
 
 The double Bollinger band strategy effectively uses volatility data to create Buy, Sell, and Neutral zones, identifying periods of strong trends. However, Bollinger Bands are based on historical volatility and may not account for significant upcoming events like Earnings Releases, News, or Federal Reserve decisions, which can notably impact the technology sector. For instance, NVIDIA's announcement of the Blackwell Platform on March 18, 2024, led to a rally of approximately 6% by March 22, 2024 ([NVIDIA News](https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing)).
 
-To enhance the strategy, we can incorporate implied volatility from the options chain for each ticker. By calculating the expected move within a given timeframe using implied volatility, we can create 1-SD and 2-SD expected move bands. These bands, similar to Bollinger Bands, reflect the market's forecasts of volatility and can make the strategy more responsive to upcoming events and news. For more details, refer to `backtest.ipynb`.
-
+To enhance the strategy, we can incorporate implied volatility from the options chain for each ticker. By calculating the expected move within a given timeframe using implied volatility, we can create 1-SD and 2-SD expected move bands. These bands, similar to Bollinger Bands, reflect the market's forecasts of volatility and can make the strategy more responsive to upcoming events and news. For more details, refer to [backtest.ipynb](./src/backtest.ipynb).
 
 ## Acknowledgements
 
 I would like to acknowledge Kathy Lien for her development of the double Bollinger band strategy. Her original work provides the foundation for this strategy and can be explored in her publications.
 
 Additionally, the strategy was repackaged and presented by [3 Candle Reversal](https://www.3candlereversal.com/post/kathy-lien-s-double-bollinger-band-strategy). They provided the detailed description and analysis used in this backtesting.
-
 
 ## License
 
