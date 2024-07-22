@@ -6,14 +6,14 @@ This repository contains the code for a backtesting software to evaluate the per
 
 The project is organized into the following directories and files:
 
+- `assets`: Contains images produced from the analysis.
 - `src/`: Contains Python scripts for analysis and implementation.
 - `README.md`: Provides an overview of the project.
 - `requirements.txt`: Includes necessary packages and imports to run the scripts in this project.
 
 ## Files
 
-- `back_test.ipynb`, `strat_backtest.py`: Jupyter Notebook / Python scripts with back tests for our Liquidity Provider (LP) strategy on Uniswap V3.
-- `model_selection.py`, `model_forecast.py`: Python scripts for specific functionalities or modules.
+- `backtest.ipynb`: Jupyter Notebook with back tests for the double Bollinger band strategy by [Kathy Lien](https://www.3candlereversal.com/post/kathy-lien-s-double-bollinger-band-strategy).
 
 ## Usage
 
@@ -22,59 +22,64 @@ To run the project or execute scripts, follow these steps:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/DarrellNgKK/truuuu.git
-   cd truuuu
+   git clone https://github.com/RamblingRaccoon/mag7_backtest.git
+   cd mag7_backtest
    ```
 
 2. Install the required dependencies:
 
    - Ensure Python is installed.
-   - Use `pip` to install necessary packages listed in `requirements.txt`.
+   - Ensure required Python packages are installed using:
+
+      ```bash
+      pip install -r requirements.txt
+      ```
 
 3. Explore the files:
 
-   - `back_test.ipynb` and `strat_backtest.py`: Details back tests for our Liquidity Provider (LP) strategy implementation on Uniswap V3.
-   - `model_selection.py` and `model_forecast.py`: Contain specific functionalities or modules used in our project.
+   - `backtest.ipynb`: Contains backtests, analysis, and insights for the double Bollinger band trading strategy on the Mag-7.
 
-## Dependencies
+## Results
 
-Ensure required Python packages are installed using:
+The table below summarizes the backtesting results over an 11-year period from January 1, 2013, to December 31, 2023:
 
-```bash
-pip install -r requirements.txt
-```
+| Statistic            | Value  |
+|----------------------|--------|
+| Total Return         | 59.57% |
+| Annual Return        | 4.35%  |
+| Annual Volatility    | 47.52% |
+| Sharpe Ratio         | 0.05   |
+| Sortino Ratio        | 0.0    |
+| Maximum Drawdown     | -70.42%|
 
-The `requirements.txt` file lists all necessary dependencies.
+The strategy suffers from significant drawdowns, high volatility, and modest returns. This is shown by the Sharpe and Sortino ratios of 0.05 and 0.00, respectively, indicating poor risk-adjusted performance.
 
-## Data
+A risk-free rate of 2.02%, sourced from [FRED](https://fred.stlouisfed.org/series/DGS10) at the start of 2013, was used for the calculations.
 
-The `/data` directory stores datasets used in our project:
+## Analysis
 
-- `DeriBit_volatility_OHLC_ETH.csv`: Contains prices for DeriBit's ETH Implied Volatility Index (similar to VIX calculations).
-- `ETHUSDC_clean.csv`: Contains spot prices for ETH/USDC from Binance. Missing data is imputed using ETH/USDT from Binance.
-- `poolDayDatas.json`: Contains on-chain data for the Uniswap V3 0.05% USDC/ETH liquidity pool. The data was obtained by querying The Graph, a decentralized indexing and querying protocol for blockchain data.
+Examining the cumulative Profit & Loss (P&L) trajectory across all tickers reveals that the strategy's returns are primarily driven by just two companies: TSLA and NVDA. In contrast, GOOG, MSFT, and META experienced losses by the end of the 11-year period.
 
-## Techniques Used
+![Profits & Loss for all Tickers](assets/all_pnl_trajectory.png)
 
-Our project utilizes various techniques:
+With a starting capital of $10000, the capital trajectory confirms our summary statistics, illustrating periods of substantial drawdowns and significant volatility, both upward and downward, with only modest overall returns.
 
-- Time series forecasting
-- Statistical modeling
+![Change in Capital over Time](assets/capital_trajectory.png)
 
-### GARCH Model for Volatility Forecasting
+## Potential Improvements
 
-We utilized the Generalized Autoregressive Conditional Heteroskedasticity (GARCH) model to forecast volatility. This method is particularly effective in capturing volatility clustering and modeling time-varying volatility in financial data analysis.
+The double Bollinger band strategy effectively uses volatility data to create Buy, Sell, and Neutral zones, identifying periods of strong trends. However, Bollinger Bands are based on historical volatility and may not account for significant upcoming events like Earnings Releases, News, or Federal Reserve decisions, which can notably impact the technology sector. For instance, NVIDIA's announcement of the Blackwell Platform on March 18, 2024, led to a rally of approximately 6% by March 22, 2024 ([NVIDIA News](https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing)).
 
-### Delta Calculation for LP Pair Hedging
+To enhance the strategy, we can incorporate implied volatility from the options chain for each ticker. By calculating the expected move within a given timeframe using implied volatility, we can create 1-SD and 2-SD expected move bands. These bands, similar to Bollinger Bands, reflect the market's forecasts of volatility and can make the strategy more responsive to upcoming events and news. For more details, refer to `backtest.ipynb`.
 
-We implemented a delta calculation methodology to hedge our Liquidity Provider (LP) pair position. This technique calculates the delta, which represents the sensitivity of the LP pair's value to price changes. By quantifying this sensitivity, we can effectively manage risk and optimize our LP strategy by adjusting our exposure to the market's movements.
 
-For detailed implementations and code related to these techniques, refer to scripts or notebooks available in the `/src` directory.
+## Acknowledgements
 
-## Contributors
+I would like to acknowledge Kathy Lien for her development of the double Bollinger band strategy. Her original work provides the foundation for this strategy and can be explored in her publications.
 
-- Max (@Maaxxxxxxx)
-- Ernest (@inistminist)
-- Darrell (@DarrellNgKK)
+Additionally, the strategy was repackaged and presented by [3 Candle Reversal](https://www.3candlereversal.com/post/kathy-lien-s-double-bollinger-band-strategy). They provided the detailed description and analysis used in this backtesting.
 
-Feel free to reach out to us if you have any questions or suggestions!
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
