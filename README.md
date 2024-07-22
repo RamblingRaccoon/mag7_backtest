@@ -11,6 +11,8 @@ The Double Bollinger Band Strategy provides clear signals for trading:
 
 ![Double Bollinger Band Strategy](assets/double_bollinger_strat.png)
 
+*Image credit: [3 Candle Reversal](https://www.3candlereversal.com/post/kathy-lien-s-double-bollinger-band-strategy)*
+
 ## Project Structure
 
 The project is organized into the following directories and files:
